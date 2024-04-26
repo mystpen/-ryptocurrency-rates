@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"net/http"
+	"strings"
 	"sync"
 
 	"github.com/mystpen/cryptocurrency-rates/config"
@@ -49,7 +50,7 @@ func (ac *ApiClient) UpdateInfo(CryptoCoins *[]model.CryptoCoin) error {
 	defer ac.mu.Unlock()
 
 	for _, coinData := range *CryptoCoins {
-		ac.data[coinData.Name] = coinData
+		ac.data[strings.ToLower(coinData.Name)] = coinData
 	}
 
 	return nil
