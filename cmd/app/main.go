@@ -14,6 +14,7 @@ func main() {
 	apiClient := api.NewApiClient()
 
 	service := service.NewService(apiClient)
+	service.Init()
 
 	handler := delivery.NewHandler(service)
 
